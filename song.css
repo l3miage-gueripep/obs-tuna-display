@@ -1,5 +1,4 @@
 *{
-    color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -15,7 +14,7 @@
 .song-informations{
     background-color: #222;
     padding: 20px;
-    gap: 0px 20px;
+    gap: 0 30px;
     width: 1000px;
     height: var(--informations-height);
     display: grid;
@@ -34,14 +33,14 @@ h1,h2{
     white-space: nowrap;
     overflow: hidden;
     width: 95%;
+    margin: 10px 0; /* overrides default margin*/
 }
 h1{
     font-size: 60px;
-    margin: 10px;
+    color: white;
 }
 h2{
     font-size: 40px;
-    margin: 10px;
     color: #aaa;
 }
 
