@@ -6,6 +6,14 @@ const coverFilename = './assets/cover.png';
 //frequency
 const frequency = 1000;
 
+//dom element containing song infos
+const informationsContainer = document.querySelector('.song-informations'); //container
+const songTitleElement = informationsContainer.querySelector('.title'); //title
+const songArtistElement = informationsContainer.querySelector('.artist');//artist
+const coverImageElement = informationsContainer.querySelector('img');
+
+const informationsContainerDisplay = window.getComputedStyle(informationsContainer).getPropertyValue('display'); //get display mode to save it
+
 //do it at frequency given
 setInterval(() =>{
     getFileText(songFilename, artistFilename, coverFilename);
@@ -14,12 +22,6 @@ setInterval(() =>{
 
 // function that gets the content of the specified files
 async function getFileText(songFilename, artistFilename, coverFilename){
-    //dom element containing song infos
-    const informationsContainer = document.querySelector('.song-informations'); //container
-    const songTitleElement = informationsContainer.querySelector('.title'); //title
-    const songArtistElement = informationsContainer.querySelector('.artist');//artist
-    const coverImageElement = informationsContainer.querySelector('img');
-
     //boolean used to detect changes
     let hasChanged = false;
 
@@ -39,4 +41,14 @@ async function getFileText(songFilename, artistFilename, coverFilename){
     if(hasChanged){
         coverImageElement.src = coverFilename + '?' + new Date().getTime();;
     }
+
+
+    //hide or show it if it is not playing a song
+    if(songData === "No song playing"){
+        informationsContainer.style.display = 'none';
+    }
+    else{
+        informationsContainer.style.display = informationsContainerDisplay;
+    }
+    
 }
